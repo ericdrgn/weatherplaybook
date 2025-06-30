@@ -17,6 +17,12 @@ interface WeatherDayProps {
   isLoading?: boolean;
 }
 
+// Helper function to parse date string in local timezone
+function parseLocalDate(dateString: string): Date {
+  const [year, month, day] = dateString.split('-').map(Number);
+  return new Date(year, month - 1, day); // month is 0-indexed in Date constructor
+}
+
 export function WeatherDay({ 
   weather, 
   recommendations, 
@@ -29,7 +35,7 @@ export function WeatherDay({
   onRefreshWeather,
   isLoading
 }: WeatherDayProps) {
-  const date = new Date(weather.date);
+  const date = parseLocalDate(weather.date);
   const dayName = isToday ? 'TODAY' : date.toLocaleDateString('en-US', { weekday: 'long' }).toUpperCase();
   const monthName = date.toLocaleDateString('en-US', { month: 'long' });
   const dayNumber = date.getDate();

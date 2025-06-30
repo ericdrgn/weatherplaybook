@@ -14,6 +14,12 @@ interface WeeklyOverviewProps {
   onOpenTodos?: () => void;
 }
 
+// Helper function to parse date string in local timezone
+function parseLocalDate(dateString: string): Date {
+  const [year, month, day] = dateString.split('-').map(Number);
+  return new Date(year, month - 1, day); // month is 0-indexed in Date constructor
+}
+
 export function WeeklyOverview({ 
   weather, 
   allRecommendations, 
@@ -103,7 +109,7 @@ export function WeeklyOverview({
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-4">
         {weather.map((dayWeather, index) => {
-          const date = new Date(dayWeather.date);
+          const date = parseLocalDate(dayWeather.date);
           const isToday = index === 0;
           const isActive = index === currentDayIndex;
           
