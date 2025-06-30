@@ -250,7 +250,7 @@ MIT License - feel free to use this project as inspiration for your own weather-
 
 ## 🔗 Links
 
-- [Live Demo](https://your-deployment-url.netlify.app)
+- [Live Demo](https://weatherplaybook.netlify.app)
 - [Bolt.new Platform](https://bolt.new)
 - [Open-Meteo API](https://open-meteo.com)
 - [Mistral AI](https://mistral.ai)
